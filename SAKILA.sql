@@ -189,10 +189,26 @@ GROUP BY c.customer_id, c.last_name, a.address, ci.city, co.country
 ORDER BY total_pagado ASC;
 
                         --Ejercicio 18--
-
-
+INSERT INTO actor(actor_id,first_name,last_name,last_update)
+VALUES(201,"Enzo","Materazzi","2025-04-24 11:54:32")
                         --Ejercicio 19--
-
+INSERT INTO actor(actor_id,first_name,last_name,last_update)
+VALUES (202,"blue","Lavel","2025-04-24 12:05:42"),
+(203,"Mike","Towers","2025-04-24 11:54:32")
                         --Ejercicio 20--
-
+UPDATE actor
+SET first_name = "Timmy", last_name = "Coll"
+WHERE actor_id = 201;
+UPDATE actor
+SET first_name = "Clarence", last_name = "Wendle"
+WHERE actor_id = 202;
+UPDATE actor
+SET first_name = "Timmy", last_name = "turner"
+WHERE actor_id = 203;
                         --Ejercicio 21--
+DELETE FROM actor
+WHERE actor_id = 201;
+DELETE FROM actor
+WHERE actor_id = 202;
+DELETE FROM actor
+WHERE actor_id = 203;
