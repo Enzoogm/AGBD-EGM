@@ -155,3 +155,47 @@ INNER JOIN
     Proveedores ON Productos.id_proveedor = Proveedores.id_proveedor
 WHERE 
     Productos.id_categoria = 1;
+
+
+
+
+
+
+
+
+
+INSERT INTO Productos (nombre_prod, precio, stock, 
+id_categoria, id_proveedor)
+VALUES ('Pepsi Zero 1.5L', 950.00, 20, 1, 1);
+
+
+---------------------Nueva sentencia para pagos, etc---------------------------
+
+
+-- Tabla Ventas
+CREATE TABLE Ventas (
+    id_venta INTEGER PRIMARY KEY AUTOINCREMENT,
+    fecha DATE NOT NULL,
+    total REAL NOT NULL
+);
+
+-- Tabla DetalleVentas
+CREATE TABLE DetalleVentas (
+    id_detalle INTEGER PRIMARY KEY AUTOINCREMENT,
+    id_venta INTEGER NOT NULL,
+    id_producto INTEGER NOT NULL,
+    cantidad INTEGER NOT NULL,
+    precio_unitario REAL NOT NULL,
+    FOREIGN KEY (id_venta) REFERENCES Ventas(id_venta),
+    FOREIGN KEY (id_producto) REFERENCES Productos(id_producto)
+);
+
+-- Tabla Pagos
+CREATE TABLE Pagos (
+    id_pago INTEGER PRIMARY KEY AUTOINCREMENT,
+    id_venta INTEGER NOT NULL,
+    metodo_pago TEXT NOT NULL,
+    monto REAL NOT NULL,
+    fecha_pago DATE NOT NULL,
+    FOREIGN KEY (id_venta) REFERENCES Ventas(id_venta)
+);
